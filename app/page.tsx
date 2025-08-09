@@ -640,6 +640,21 @@ export default function HillyheallyHomepage() {
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
             <p>&copy; 2025 Hilly Heally. All rights reserved.</p>
+            <div className="mt-3 flex items-center justify-center gap-6 text-sm">
+              <Link
+                href="/terms"
+                className="hover:text-white transition-colors"
+              >
+                서비스 이용약관
+              </Link>
+              <span className="text-gray-600">|</span>
+              <Link
+                href="/privacy-policy"
+                className="hover:text-white transition-colors"
+              >
+                개인정보처리방침
+              </Link>
+            </div>
           </div>
         </div>
       </footer>

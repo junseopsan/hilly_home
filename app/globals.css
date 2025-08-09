@@ -92,3 +92,19 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Make first column wider for privacy policy tables */
+.privacy-prose table {
+  table-layout: fixed;
+  width: 100%;
+}
+.privacy-prose table thead th:first-child,
+.privacy-prose table tbody td:first-child {
+  width: 12rem; /* widen the first column */
+}
+
+/* Improve table cell wrapping */
+.privacy-prose table th,
+.privacy-prose table td {
+  word-break: keep-all;
+}

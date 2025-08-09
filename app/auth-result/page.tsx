@@ -25,17 +25,11 @@ function AuthResultContent() {
     handleAuthResult(apiToken, certNum);
   }, [searchParams]);
 
-  const handleAuthResult = (apiToken: string, certNum: string) => {
-    // 여기서 본인인증 결과를 서버로 전송하거나 처리
-    console.log("본인인증 토큰:", apiToken);
-    console.log("인증번호:", certNum);
-
-    // 예시: 서버로 결과 전송
-    sendAuthResultToServer(apiToken, certNum);
-  };
-
-  const sendAuthResultToServer = async (apiToken: string, certNum: string) => {
+  const handleAuthResult = async (apiToken: string, apiCertNum: string) => {
     try {
+      console.log("본인인증 시작:", { apiToken, apiCertNum });
+
+      // KMC API 호출
       const response = await fetch("/api/auth/verify", {
         method: "POST",
         headers: {
@@ -43,24 +37,28 @@ function AuthResultContent() {
         },
         body: JSON.stringify({
           apiToken,
-          certNum,
+          apiCertNum,
         }),
       });
 
+      console.log("API 응답 상태:", response.status);
+
       if (response.ok) {
         const result = await response.json();
+        console.log("API 응답 결과:", result);
 
-        // 성공 시 처리
         if (result.success) {
           // 성공 페이지로 리다이렉트 또는 상태 업데이트
           window.location.href = "/auth-success";
         } else {
-          // 실패 시 처리
+          console.error("본인인증 실패:", result.message);
           alert("본인인증에 실패했습니다");
           window.location.href = "/auth-failed";
         }
       } else {
-        throw new Error("서버 오류가 발생했습니다");
+        const errorText = await response.text();
+        console.error("API 호출 실패:", response.status, errorText);
+        throw new Error(`서버 오류: ${response.status} ${response.statusText}`);
       }
     } catch (error) {
       console.error("본인인증 처리 중 오류:", error);
