@@ -173,7 +173,7 @@ export default function HillyheallyHomepage() {
                   <Map className="h-6 w-6 text-orange-500" />
                 </div>
                 <CardTitle className="text-white">
-                  3D 지도 기반 퀘스트 (함께 걷기, 찾기, 그리기)
+                  3D 지도 기반 퀘스트
                 </CardTitle>
               </CardHeader>
               <CardContent>
