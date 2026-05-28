@@ -1,6 +1,8 @@
 [build]
   command = "pnpm run build"
-  publish = "out"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [[headers]]
   for = "/.well-known/assetlinks.json"

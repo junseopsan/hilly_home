@@ -346,6 +346,13 @@ export default function HillyheallyHomepage() {
               >
                 개인정보처리방침
               </Link>
+              <span className="text-gray-700">|</span>
+              <Link
+                href="/delete-account"
+                className="hover:text-white transition-colors"
+              >
+                계정 삭제
+              </Link>
             </div>
           </div>
         </div>
